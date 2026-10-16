@@ -1,6 +1,6 @@
 import { useReducedMotion } from 'motion/react'
 import * as m from 'motion/react-m'
-import { skillCategories, techStack } from '../../data/portfolio'
+import { aiTools, skillCategories, techStack } from '../../data/portfolio'
 import { Reveal } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
 import { TechIcon } from '../ui/TechIcon'
@@ -30,17 +30,9 @@ export function Skills() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.08} className="min-w-0">
-          <ul className="grid grid-cols-3 gap-x-3 gap-y-5 min-[420px]:grid-cols-4 sm:grid-cols-6 lg:grid-cols-4 xl:grid-cols-4" aria-label="Tech-Stack">
-            {techStack.map((tech) => (
-              <li key={tech.id} className="group flex flex-col items-center gap-2 text-center">
-                <span className="grid size-[60px] place-items-center rounded-2xl border border-line bg-surface shadow-[var(--shadow-card)] transition-[transform,border-color,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:border-line-strong group-hover:shadow-[0_0_28px_-8px_var(--glow-a)]">
-                  <TechIcon id={tech.id} className="size-8" />
-                </span>
-                <span className="text-[0.76rem] font-semibold text-muted">{tech.label}</span>
-              </li>
-            ))}
-          </ul>
+        <Reveal delay={0.08} className="min-w-0 space-y-8">
+          <IconGrid title="Stack" items={techStack} />
+          <IconGrid title="KI-Werkzeuge" items={aiTools} />
         </Reveal>
 
         <Reveal delay={0.16} className="min-w-0">
@@ -64,5 +56,26 @@ export function Skills() {
         </Reveal>
       </div>
     </section>
+  )
+}
+
+function IconGrid({ title, items }: { title: string; items: typeof techStack }) {
+  return (
+    <div>
+      <h3 className="mb-4 font-mono text-[0.68rem] font-medium tracking-[0.2em] text-dim uppercase">{title}</h3>
+      <ul
+        className="grid grid-cols-3 gap-x-3 gap-y-5 min-[420px]:grid-cols-4 sm:grid-cols-6 lg:grid-cols-4"
+        aria-label={title}
+      >
+        {items.map((tech) => (
+          <li key={tech.id} className="group flex flex-col items-center gap-2 text-center">
+            <span className="grid size-[60px] place-items-center rounded-2xl border border-line bg-surface shadow-[var(--shadow-card)] transition-[transform,border-color,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:border-line-strong group-hover:shadow-[0_0_28px_-8px_var(--glow-a)]">
+              <TechIcon id={tech.id} className="size-8" />
+            </span>
+            <span className="text-[0.76rem] leading-tight font-semibold text-muted">{tech.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }

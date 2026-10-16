@@ -1,8 +1,25 @@
-import type { TechIconId } from '../../data/portfolio'
+import { Bot, CodeXml, Cpu, Gem, Sparkles, SquareTerminal, type LucideIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
+import type { TechIconId } from '../../data/portfolio'
+
+// KI-Werkzeuge: bewusst neutrale Lucide-Icons statt nachgezeichneter Markenlogos.
+const aiIcons = {
+  claude: Sparkles,
+  'claude-code': SquareTerminal,
+  chatgpt: Bot,
+  codex: CodeXml,
+  gemini: Gem,
+  ollama: Cpu,
+} satisfies Partial<Record<TechIconId, LucideIcon>>
+
+type AiIconId = keyof typeof aiIcons
+
+function isAiIcon(id: TechIconId): id is AiIconId {
+  return id in aiIcons
+}
 
 // Vereinfachte, selbst gezeichnete Technologie-Symbole (24×24).
-const icons: Record<TechIconId, ReactNode> = {
+const icons: Record<Exclude<TechIconId, AiIconId>, ReactNode> = {
   react: (
     <g fill="none" stroke="#38bdf8" strokeWidth="1.2">
       <ellipse cx="12" cy="12" rx="10" ry="3.9" />
@@ -118,6 +135,10 @@ const icons: Record<TechIconId, ReactNode> = {
 }
 
 export function TechIcon({ id, className = 'size-8' }: { id: TechIconId; className?: string }) {
+  if (isAiIcon(id)) {
+    const Icon = aiIcons[id]
+    return <Icon className={`${className} p-0.5 text-ink`} strokeWidth={1.6} aria-hidden="true" focusable="false" />
+  }
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" focusable="false">
       {icons[id]}

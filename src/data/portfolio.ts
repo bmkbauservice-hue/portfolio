@@ -278,6 +278,13 @@ export type TechIconId =
   | 'n8n'
   | 'linux'
   | 'git'
+  // KI-Werkzeuge: neutrale Lucide-Icons, keine Markenlogos
+  | 'claude'
+  | 'claude-code'
+  | 'chatgpt'
+  | 'codex'
+  | 'gemini'
+  | 'ollama'
 
 export const techStack: { id: TechIconId; label: string }[] = [
   { id: 'react', label: 'React' },
@@ -293,22 +300,27 @@ export const techStack: { id: TechIconId; label: string }[] = [
   { id: 'git', label: 'Git' },
 ]
 
+export const aiTools: { id: TechIconId; label: string }[] = [
+  { id: 'claude', label: 'Claude' },
+  { id: 'claude-code', label: 'Claude Code' },
+  { id: 'chatgpt', label: 'ChatGPT' },
+  { id: 'codex', label: 'OpenAI Codex' },
+  { id: 'gemini', label: 'Google Gemini / AI Studio' },
+  { id: 'ollama', label: 'Ollama' },
+]
+
 export const skillCategories = [
   { name: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS'] },
   { name: 'Backend', items: ['Python', 'FastAPI', 'Node.js', 'Fastify', 'C#', '.NET'] },
   { name: 'Datenbanken', items: ['PostgreSQL', 'SQLite'] },
   { name: 'Tools', items: ['Git', 'GitHub', 'Docker', 'VS Code', 'Linux'] },
   {
-    name: 'KI & Automatisierung',
-    items: [
-      'KI-Agenten',
-      'n8n',
-      'LLM-Integration',
-      'Prompt Engineering',
-      'Ollama',
-      'APIs',
-      'NFC-Anwendungen',
-    ],
+    name: 'KI-Werkzeuge',
+    items: ['Claude', 'Claude Code', 'ChatGPT', 'OpenAI Codex', 'Google Gemini / AI Studio', 'Ollama'],
+  },
+  {
+    name: 'Automatisierung & APIs',
+    items: ['KI-Agenten', 'n8n', 'LLM-Integration', 'Prompt Engineering', 'APIs', 'NFC-Anwendungen'],
   },
 ] as const
 
