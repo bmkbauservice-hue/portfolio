@@ -33,25 +33,34 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.08} className="min-w-0">
-          <figure className="relative mx-auto aspect-[4/5] w-full max-w-[380px] overflow-hidden rounded-3xl border border-line-strong bg-[#000] shadow-[var(--shadow-card)]">
-            <Portrait crop="card" />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(180deg, transparent 45%, rgb(3 8 20 / 0.85) 100%), radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%)',
-              }}
-            />
-            <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:p-5">
-              <span className="neon-script text-[clamp(2rem,6vw,2.6rem)] [--neon:#4ea8ff] [text-shadow:0_0_6px_rgb(78_168_255/0.9),0_0_18px_rgb(47_139_255/0.65),0_0_42px_rgb(47_139_255/0.4)]">
-                {person.fullName}
-              </span>
-              <span className="flex flex-none items-center gap-2 rounded-xl border border-white/15 bg-[rgb(6_12_28/0.75)] px-3 py-2 text-[0.74rem] leading-tight font-semibold text-white backdrop-blur-md">
+          {/* Badge: ab sm wie bisher unten rechts im Bild, auf dem Handy unter dem Foto (nie über dem Gesicht) */}
+          <figure className="mx-auto w-full max-w-[380px]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line-strong bg-[#000] shadow-[var(--shadow-card)]">
+              <Portrait crop="card" />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(180deg, transparent 45%, rgb(3 8 20 / 0.85) 100%), radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%)',
+                }}
+              />
+              <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:p-5">
+                <span className="neon-script text-[clamp(2rem,6vw,2.6rem)] [--neon:#4ea8ff] [text-shadow:0_0_6px_rgb(78_168_255/0.9),0_0_18px_rgb(47_139_255/0.65),0_0_42px_rgb(47_139_255/0.4)]">
+                  {person.fullName}
+                </span>
+                <span className="hidden flex-none sm:flex items-center gap-2 rounded-xl border border-white/15 bg-[rgb(6_12_28/0.75)] px-3 py-2 text-[0.74rem] leading-tight font-semibold text-white backdrop-blur-md">
+                  <span className="pulse-dot size-2 rounded-full bg-[#22d3ee] shadow-[0_0_10px_#22d3ee]" aria-hidden="true" />
+                  {about.badge}
+                </span>
+              </figcaption>
+            </div>
+            <div className="mt-3 flex justify-center sm:hidden">
+              <span className="flex items-center gap-2 rounded-xl border border-white/15 bg-[rgb(6_12_28/0.75)] px-3 py-2 text-[0.74rem] leading-tight font-semibold text-white backdrop-blur-md">
                 <span className="pulse-dot size-2 rounded-full bg-[#22d3ee] shadow-[0_0_10px_#22d3ee]" aria-hidden="true" />
                 {about.badge}
               </span>
-            </figcaption>
+            </div>
           </figure>
         </Reveal>
 

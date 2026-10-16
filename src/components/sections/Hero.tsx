@@ -4,6 +4,7 @@ import { ArrowRight, MessageSquare } from 'lucide-react'
 import { heroSideLabels, heroStats, heroTagline, links, person } from '../../data/portfolio'
 import { GitHubIcon } from '../ui/BrandIcons'
 import { Portrait } from '../ui/Portrait'
+import { useMediaQuery } from '../ui/useMediaQuery'
 
 const container: Variants = {
   hidden: {},
@@ -115,59 +116,66 @@ function HeroVisual({ ready }: { ready: boolean }) {
   const { scrollY } = useScroll()
   const taglineY = useTransform(scrollY, [0, 700], [0, reduce ? 0 : -50])
   const codeY = useTransform(scrollY, [0, 700], [0, reduce ? 0 : -80])
+  // Handy: Code-Fenster liegt unter dem Foto und bewegt sich nicht mit (sonst wandert es übers Gesicht)
+  const isPhone = useMediaQuery('(max-width: 639px)')
 
   return (
     <m.div
       data-tone="dark"
-      className="hero-visual relative mx-auto aspect-square w-full max-w-[560px] min-w-0"
+      className="hero-visual relative mx-auto w-full max-w-[560px] min-w-0"
       initial={reduce ? false : { opacity: 0, scale: 0.96 }}
       animate={reduce ? undefined : ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
     >
-      <div aria-hidden="true" className="hero-grid absolute inset-0" />
+      <div className="relative aspect-square">
+        <div aria-hidden="true" className="hero-grid absolute inset-0" />
 
-      {/* Leuchtender Kreisring mit Foto */}
-      <div className="absolute top-[9%] left-[19%] aspect-square w-[72%]">
-        <div
-          aria-hidden="true"
-          className="absolute -inset-[12%] rounded-full"
-          style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent) 26%, transparent), transparent 62%)' }}
-        />
-        <div aria-hidden="true" className="orbit-halo" />
-        <div aria-hidden="true" className="orbit-ring" />
-        <div className="absolute inset-[3.5%] overflow-hidden rounded-full border border-line-strong bg-sunken shadow-[inset_0_0_40px_rgb(0_0_0/0.35)]">
-          <Portrait crop="circle" priority />
+        {/* Leuchtender Kreisring mit Foto */}
+        <div className="absolute top-[9%] left-[19%] aspect-square w-[72%]">
+          <div
+            aria-hidden="true"
+            className="absolute -inset-[12%] rounded-full"
+            style={{ background: 'radial-gradient(circle, color-mix(in srgb, var(--accent) 26%, transparent), transparent 62%)' }}
+          />
+          <div aria-hidden="true" className="orbit-halo" />
+          <div aria-hidden="true" className="orbit-ring" />
+          <div className="absolute inset-[3.5%] overflow-hidden rounded-full border border-line-strong bg-sunken shadow-[inset_0_0_40px_rgb(0_0_0/0.35)]">
+            <Portrait crop="circle" priority />
+          </div>
+          <span aria-hidden="true" className="absolute top-[6%] right-[13%] size-2.5 rounded-full bg-accent-2 shadow-[0_0_14px_4px_var(--glow-c)]" />
+          <span aria-hidden="true" className="absolute bottom-[14%] left-[3%] size-1.5 rounded-full bg-violet shadow-[0_0_12px_3px_var(--violet)]" />
         </div>
-        <span aria-hidden="true" className="absolute top-[6%] right-[13%] size-2.5 rounded-full bg-accent-2 shadow-[0_0_14px_4px_var(--glow-c)]" />
-        <span aria-hidden="true" className="absolute bottom-[14%] left-[3%] size-1.5 rounded-full bg-violet shadow-[0_0_12px_3px_var(--violet)]" />
+
+        {/* Handschriftliche Zeile */}
+        <m.p
+          aria-hidden="true"
+          style={{ y: taglineY }}
+          className="neon-script absolute top-[3%] left-0 z-10 -rotate-[16deg] text-[clamp(1.5rem,4.6vw,2.5rem)]"
+        >
+          {heroTagline.map((word, i) => (
+            <span key={word} className="block" style={{ marginLeft: `${i * 0.55}em` }}>
+              {word}
+            </span>
+          ))}
+        </m.p>
+
+        {/* Seitenlabels */}
+        <ul
+          aria-hidden="true"
+          className="absolute top-[4%] right-0 z-10 space-y-1 font-mono text-[0.62rem] font-medium tracking-[0.24em] text-muted uppercase sm:text-[0.68rem]"
+        >
+          {heroSideLabels.map((label) => (
+            <li key={label}>{label}</li>
+          ))}
+          <li className="!mt-2.5 h-px w-10 bg-gradient-to-r from-accent-2 to-transparent" />
+        </ul>
       </div>
 
-      {/* Handschriftliche Zeile */}
-      <m.p
-        aria-hidden="true"
-        style={{ y: taglineY }}
-        className="neon-script absolute top-[3%] left-0 z-10 -rotate-[16deg] text-[clamp(1.5rem,4.6vw,2.5rem)]"
+      {/* Schwebendes Code-Fenster – auf dem Handy unter dem Foto, ab sm wie bisher darüber */}
+      <m.div
+        style={{ y: isPhone ? 0 : codeY }}
+        className="relative z-10 mx-auto -mt-[4%] mb-5 w-[min(calc(100%-32px),300px)] sm:absolute sm:right-0 sm:bottom-[4%] sm:m-0 sm:w-[min(64%,300px)]"
       >
-        {heroTagline.map((word, i) => (
-          <span key={word} className="block" style={{ marginLeft: `${i * 0.55}em` }}>
-            {word}
-          </span>
-        ))}
-      </m.p>
-
-      {/* Seitenlabels */}
-      <ul
-        aria-hidden="true"
-        className="absolute top-[4%] right-0 z-10 space-y-1 font-mono text-[0.62rem] font-medium tracking-[0.24em] text-muted uppercase sm:text-[0.68rem]"
-      >
-        {heroSideLabels.map((label) => (
-          <li key={label}>{label}</li>
-        ))}
-        <li className="!mt-2.5 h-px w-10 bg-gradient-to-r from-accent-2 to-transparent" />
-      </ul>
-
-      {/* Schwebendes Code-Fenster */}
-      <m.div style={{ y: codeY }} className="absolute right-0 bottom-[4%] z-10 w-[min(64%,300px)]">
         <div className="code-window float-y overflow-hidden" aria-hidden="true">
           <div className="flex items-center gap-1.5 border-b border-line px-3 py-2">
             <span className="size-2 rounded-full bg-[#ff5f57]" />
