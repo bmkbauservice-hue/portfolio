@@ -120,7 +120,7 @@ export const projects: Project[] = [
       {
         name: 'E-Mail-Agent',
         text: 'Verschickt E-Mails aus dem Agenten heraus.',
-        state: 'im Aufbau',
+        state: 'aktiv',
       },
     ],
     featureGroups: [],

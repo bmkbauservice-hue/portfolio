@@ -13,7 +13,7 @@ const LOG = [
   { t: '08:06', tag: 'kalender', text: 'Termin eingetragen', ok: true },
   { t: '09:15', tag: 'kicktipp', text: 'Ausfälle & Form recherchiert' },
   { t: '09:16', tag: 'kicktipp', text: 'Spieltag getippt', ok: true },
-  { t: '09:16', tag: 'e-mail', text: 'Modul im Aufbau …', pending: true },
+  { t: '09:20', tag: 'e-mail', text: 'E-Mail verschickt', ok: true },
 ]
 
 const tagColor: Record<string, string> = {
@@ -24,7 +24,7 @@ const tagColor: Record<string, string> = {
   pdf: 'text-accent',
   kalender: 'text-accent',
   kicktipp: 'text-warn',
-  'e-mail': 'text-dim',
+  'e-mail': 'text-accent-2',
 }
 
 export function TerminalPreview({ large = false }: { large?: boolean }) {
@@ -48,7 +48,7 @@ export function TerminalPreview({ large = false }: { large?: boolean }) {
     <div
       ref={ref}
       role="img"
-      aria-label="Illustration: Beispielablauf im Log des Muju Agent (Bewerbung, Kalender, Kicktipp)"
+      aria-label="Illustration: Beispielablauf im Log des Muju Agent (Bewerbung, Kalender, Kicktipp, E-Mail)"
       className="flex h-full flex-col bg-pv-bg font-mono"
     >
       <div className="flex flex-none items-center gap-1.5 border-b border-pv-line px-3 py-2">
@@ -66,7 +66,7 @@ export function TerminalPreview({ large = false }: { large?: boolean }) {
           <div key={i} className="flex min-w-0 gap-2 whitespace-nowrap">
             <span className="text-dim">{line.t}</span>
             <span className={`w-[4.6rem] flex-none ${tagColor[line.tag]}`}>[{line.tag}]</span>
-            <span className={`truncate ${line.pending ? 'text-dim' : ''}`}>
+            <span className="truncate">
               {line.text}
               {line.ok && <span className="ml-1.5 text-ok">✓</span>}
             </span>
