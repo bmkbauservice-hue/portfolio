@@ -18,9 +18,8 @@ npm run lint      # oxlint
 Alle Texte, Projekte, Skills, Stationen und Links stehen in **`src/data/portfolio.ts`**.
 Komponenten enthalten keine eigenen Inhalte.
 
-Offene Platzhalter (im Code mit `PLATZHALTER` markiert):
+Noch offen:
 
-- `links.linkedin` – leer; LinkedIn erscheint im UI erst, wenn eine URL eingetragen ist.
 - `links.email` – als „zu bestätigen“ markiert.
 
 ## Veröffentlichung

@@ -28,8 +28,8 @@ export const links = {
   // zu bestätigen: E-Mail-Adresse vor Veröffentlichung noch einmal prüfen
   email: 'IT-mkdir@proton.me',
   github: 'https://github.com/bmkbauservice-hue',
-  // PLATZHALTER: LinkedIn-URL eintragen. Bleibt im UI ausgeblendet, solange leer.
-  linkedin: '',
+  // Wird im UI nur angezeigt, wenn befüllt.
+  linkedin: 'https://www.linkedin.com/in/mario-kujoth-968b50157',
 } as const
 
 export const site = {
