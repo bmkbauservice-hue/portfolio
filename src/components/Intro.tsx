@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { intro } from '../data/portfolio'
 import { markIntroSeen } from './introStorage'
 
-const DURATION_MS = 2700
+const DURATION_MS = 2400 // inkl. Ausblenden (0,35 s) bleibt das Intro unter 3 s
 
 export function Intro({ onDone }: { onDone: () => void }) {
   const [visible, setVisible] = useState(true)
@@ -14,7 +14,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
   useEffect(() => {
     markIntroSeen()
     skipRef.current?.focus({ preventScroll: true })
-    const t1 = window.setTimeout(() => setStep(1), 1150)
+    const t1 = window.setTimeout(() => setStep(1), 950)
     const t2 = window.setTimeout(() => setVisible(false), DURATION_MS)
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setVisible(false)
     window.addEventListener('keydown', onKey)
@@ -34,7 +34,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
           aria-label="Begrüßung"
           className="fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-bg px-6"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.45, ease: 'easeOut' } }}
+          exit={{ opacity: 0, transition: { duration: 0.35, ease: 'easeOut' } }}
         >
           <div
             aria-hidden="true"
@@ -49,7 +49,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
                   className="font-display text-[clamp(2.2rem,7vw,4.5rem)] font-extrabold tracking-[-0.03em]"
                   initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, y: -18, filter: 'blur(6px)' }}
+                  exit={{ opacity: 0, y: -18, filter: 'blur(6px)', transition: { duration: 0.25 } }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {intro.greeting.replace('Mario.', '')}

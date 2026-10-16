@@ -15,7 +15,7 @@ export function Contact() {
         <Reveal>
           <div
             data-tone="dark"
-            className="contact-band relative isolate overflow-hidden rounded-[28px] border border-line-strong px-5 pt-10 pb-28 sm:px-10 sm:pt-12 lg:px-14 lg:pb-32"
+            className="contact-band relative isolate overflow-hidden rounded-[28px] border border-line-strong px-5 pt-10 pb-32 sm:px-10 sm:pt-12 sm:pb-40 lg:px-14"
           >
             <Mountains className="absolute inset-x-0 bottom-0 -z-10 h-[150px] w-full sm:h-[190px]" />
             <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-12">
@@ -104,8 +104,8 @@ type Errors = Partial<Record<keyof Fields, string>>
 
 function validate(values: Fields): Errors {
   const errors: Errors = {}
-  if (values.name.trim().length < 2) errors.name = 'Bitte gib deinen Namen an.'
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email.trim())) errors.email = 'Bitte gib eine gültige E-Mail-Adresse an.'
+  if (values.name.trim().length < 2) errors.name = 'Bitte geben Sie Ihren Namen an.'
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email.trim())) errors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse an.'
   if (values.message.trim().length < 20) errors.message = 'Die Nachricht sollte mindestens 20 Zeichen lang sein.'
   return errors
 }
@@ -204,7 +204,7 @@ function DemoForm() {
           <div className="mt-5 rounded-xl border border-line-strong bg-sunken p-4 text-[0.9rem]">
             <p className="font-semibold">Eingaben sind vollständig – aber noch nicht gesendet.</p>
             <p className="mt-1 text-muted">
-              Der Versand über das Formular ist noch nicht aktiv. Übernimm die Nachricht einfach in dein E-Mail-Programm.
+              Der Versand über das Formular ist noch nicht aktiv. Übernehmen Sie die Nachricht einfach in Ihr E-Mail-Programm.
             </p>
             <a href={mailto} className="btn btn-primary btn-sm mt-3">
               <Mail size={15} />

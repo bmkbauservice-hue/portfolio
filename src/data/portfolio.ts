@@ -36,8 +36,8 @@ export const site = {
   title: 'Mario Kujoth – Software Engineering, Webentwicklung & KI',
   description:
     'Portfolio von Mario Kujoth: Web-Anwendungen, KI-Agenten und digitale Produkte. Praktikum gesucht vom 29.01. bis 30.03.2027 in Oberhavel oder Berlin.',
-  // PLATZHALTER: Domain eintragen, sobald die Seite online ist (für Canonical und og:url).
-  url: '',
+  // GitHub Pages; bei Domainwechsel auch canonical/og:url/og:image in index.html anpassen
+  url: 'https://bmkbauservice-hue.github.io/portfolio/',
   copyright: '© 2026 Mario Kujoth',
 } as const
 
@@ -368,7 +368,7 @@ export const timeline: TimelineEntry[] = [
 
 export const contact = {
   eyebrow: 'Kontakt',
-  heading: 'Lass uns gemeinsam etwas Großartiges entwickeln.',
-  text: 'Du hast einen Praktikumsplatz, ein Projekt oder eine Frage zu meiner Arbeit? Schreib mir eine E-Mail – ich freue mich auf deine Nachricht.',
+  heading: 'Lassen Sie uns gemeinsam etwas Großartiges entwickeln.',
+  text: 'Sie haben einen Praktikumsplatz, ein Projekt oder eine Frage zu meiner Arbeit? Schreiben Sie mir eine E-Mail – ich freue mich auf Ihre Nachricht.',
   formNotice: 'Demo – Versand noch nicht aktiv, bitte E-Mail nutzen',
 } as const

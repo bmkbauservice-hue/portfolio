@@ -94,7 +94,7 @@ export function Header() {
         <div className="ml-auto flex items-center gap-2 sm:gap-3 lg:ml-0">
           <ThemeSwitcher />
           <a href="#kontakt" className="btn btn-ghost btn-sm hidden md:inline-flex">
-            Lass uns sprechen
+            Lassen Sie uns sprechen
             <ArrowRight size={15} className="nudge" />
           </a>
           <button
@@ -141,7 +141,7 @@ export function Header() {
               ))}
               <li className="mt-2 px-3 pb-2 md:hidden">
                 <a href="#kontakt" onClick={() => setMenuOpen(false)} className="btn btn-primary w-full">
-                  Lass uns sprechen
+                  Lassen Sie uns sprechen
                   <ArrowRight size={16} />
                 </a>
               </li>
