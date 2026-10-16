@@ -35,7 +35,8 @@ Der Vite-`base` ist `/portfolio/`. Bei eigener Domain `base`, `site.url` sowie
 Drei Themes über `data-theme` auf `<html>`: **Dark** (Standard), **Light**, **Hybrid**.
 Die Farb-Tokens stehen in `src/index.css`. Im Hybrid-Theme setzen Bereiche mit
 `data-tone="dark" | "light"` ihren eigenen Token-Satz. Die Auswahl wird in `localStorage`
-(`mk-theme`) gespeichert, das Intro merkt sich `mk-intro-seen`.
+(`mk-theme`) gespeichert. Das Intro erscheint einmal pro Besuch und merkt sich das in
+`sessionStorage` (`mk-intro-seen`, gilt je Tab bis zum Schließen).
 
 ## Foto
 
