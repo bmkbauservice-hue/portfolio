@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Lokale Arbeitsmaterialien – bewusst nicht im öffentlichen Repo
+referenz/
+claude-code-auftrag-portfolio.md

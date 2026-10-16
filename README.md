@@ -21,8 +21,14 @@ Komponenten enthalten keine eigenen Inhalte.
 Offene Platzhalter (im Code mit `PLATZHALTER` markiert):
 
 - `links.linkedin` – leer; LinkedIn erscheint im UI erst, wenn eine URL eingetragen ist.
-- `site.url` – Domain fehlt noch; danach in `index.html` `og:url` und eine absolute `og:image`-URL ergänzen.
 - `links.email` – als „zu bestätigen“ markiert.
+
+## Veröffentlichung
+
+Jeder Push auf `main` baut und veröffentlicht die Seite über GitHub Actions
+(`.github/workflows/deploy.yml`) unter https://bmkbauservice-hue.github.io/portfolio/.
+Der Vite-`base` ist `/portfolio/`. Bei eigener Domain `base`, `site.url` sowie
+`canonical`/`og:url`/`og:image` in `index.html` anpassen.
 
 ## Themes
 
@@ -33,7 +39,7 @@ Die Farb-Tokens stehen in `src/index.css`. Im Hybrid-Theme setzen Bereiche mit
 
 ## Foto
 
-`referenz/portrait.jpg` wurde nur zugeschnitten und skaliert:
+Das Originalfoto (lokal, nicht im Repo) wurde nur zugeschnitten und skaliert:
 `src/assets/portrait-circle.webp` (1:1, Hero) und `src/assets/portrait-card.webp` (4:5, Über mich).
 `public/og-image.png` (1200×630) ist daraus für Social-Previews gerendert.
 
@@ -51,5 +57,5 @@ src/
     ui/                      Logo, Icons, Reveal, Portrait, CopyButton …
     Intro.tsx                Intro beim ersten Besuch
   index.css                  Tokens, Theme-Regeln, Effekte
-referenz/                    Auftrag-Referenzen (Mockup, frühere Version, Foto)
+referenz/                    nur lokal (in .gitignore): Mockup, frühere Version, Originalfotos
 ```
