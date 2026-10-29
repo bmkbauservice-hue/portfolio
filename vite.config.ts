@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // GitHub Pages: https://bmkbauservice-hue.github.io/portfolio/
-  base: '/portfolio/',
+  // Live unter https://mkdirdesign.com/ (eigener Server)
+  base: '/',
   plugins: [react(), tailwindcss()],
 })

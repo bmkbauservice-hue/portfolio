@@ -24,10 +24,19 @@ Noch offen:
 
 ## Veröffentlichung
 
-Jeder Push auf `main` baut und veröffentlicht die Seite über GitHub Actions
-(`.github/workflows/deploy.yml`) unter https://bmkbauservice-hue.github.io/portfolio/.
-Der Vite-`base` ist `/portfolio/`. Bei eigener Domain `base`, `site.url` sowie
-`canonical`/`og:url`/`og:image` in `index.html` anpassen.
+Live unter **https://mkdirdesign.com/** (eigener OVH-Server, nginx hinter Caddy).
+
+Jeder Push auf `main` startet `.github/workflows/deploy.yml`:
+
+1. `npm ci`, `npm run lint`, `npm run build` → das fertige `dist/` landet im Branch **`site`**.
+2. Der Server holt sich `site` alle 5 Minuten selbst (systemd-Timer `portfolio-update`) – kein Zugang von GitHub zum Server nötig.
+3. GitHub Pages (https://bmkbauservice-hue.github.io/portfolio/) zeigt nur noch eine Weiterleitung auf die Domain
+   (`.github/pages-redirect/`), damit alte Links weiter funktionieren.
+
+Vite-`base` ist `/`. Bei einem Domainwechsel `site.url` sowie `canonical`/`og:url`/`og:image` in `index.html` anpassen.
+
+**NFC-Tag:** beschrieben mit `https://mkdirdesign.com/nfc`. Caddy leitet `/nfc` auf die Startseite weiter –
+das Ziel lässt sich dort ändern, ohne den Tag neu zu beschreiben.
 
 ## Themes
 

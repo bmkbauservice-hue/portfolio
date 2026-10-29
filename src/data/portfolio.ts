@@ -36,8 +36,8 @@ export const site = {
   title: 'Mario Kujoth – Software Engineering, Webentwicklung & KI',
   description:
     'Portfolio von Mario Kujoth: Web-Anwendungen, KI-Agenten und digitale Produkte. Praktikum gesucht vom 29.01. bis 30.03.2027 in Oberhavel oder Berlin.',
-  // GitHub Pages; bei Domainwechsel auch canonical/og:url/og:image in index.html anpassen
-  url: 'https://bmkbauservice-hue.github.io/portfolio/',
+  // bei Domainwechsel auch canonical/og:url/og:image in index.html anpassen
+  url: 'https://mkdirdesign.com/',
   copyright: '© 2026 Mario Kujoth',
 } as const
 
